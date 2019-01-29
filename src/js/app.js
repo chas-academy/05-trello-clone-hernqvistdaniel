@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-// require('webpack-jquery-ui');
+require('webpack-jquery-ui');
 import '../css/styles.css';
 
 /**
@@ -10,7 +10,7 @@ import '../css/styles.css';
 
 // Här tillämpar vi mönstret reavealing module pattern:
 // Mer information om det mönstret här: https://bit.ly/1nt5vXP
-const jtrello = (function() {
+const jtrello = (function () {
   "use strict"; // https://lucybain.com/blog/2014/js-use-strict/
 
   // Referens internt i modulen för DOM element
@@ -23,7 +23,7 @@ const jtrello = (function() {
     DOM.$columns = $('.column');
     DOM.$lists = $('.list');
     DOM.$cards = $('.card');
-    
+
     DOM.$newListButton = $('button#new-list');
     DOM.$deleteListButton = $('.list-header > button.delete');
 
@@ -32,12 +32,13 @@ const jtrello = (function() {
   }
 
   function createTabs() {}
+
   function createDialogs() {}
 
   /*
-  *  Denna metod kommer nyttja variabeln DOM för att binda eventlyssnare till
-  *  createList, deleteList, createCard och deleteCard etc.
-  */
+   *  Denna metod kommer nyttja variabeln DOM för att binda eventlyssnare till
+   *  createList, deleteList, createCard och deleteCard etc.
+   */
   function bindEvents() {
     DOM.$newListButton.on('click', createList);
     DOM.$deleteListButton.on('click', deleteList);
@@ -53,8 +54,13 @@ const jtrello = (function() {
   }
 
   function deleteList() {
+      $('.list').on('click', '.delete', function () {
+      $(this).closest('.column').fadeOut(1600, function() {
+        $(this).closest('.column').remove();
     console.log("This should delete the list you clicked on");
-  }
+      });
+  });
+}
 
   /* =========== Metoder för att hantera kort i listor nedan =========== */
   function createCard(event) {
@@ -63,7 +69,10 @@ const jtrello = (function() {
   }
 
   function deleteCard() {
-    console.log("This should delete the card you clicked on");
+      $('.card').on('click', '.delete', function () {
+      $(this).parent().remove();
+      console.log("This should delete the card you clicked on");
+    });
   }
 
   // Metod för att rita ut element i DOM:en
@@ -89,6 +98,6 @@ const jtrello = (function() {
 })();
 
 //usage
-$("document").ready(function() {
+$("document").ready(function () {
   jtrello.init();
 });
