@@ -51,11 +51,11 @@ module.exports = {
   }),
   new webpack.HotModuleReplacementPlugin()
 ],
-  devServer: {
-    hot: true,
-    contentBase: path.join(__dirname, 'public'),
-    publicPath: '/',
-    compress: true,
-    port: 3000
-  }
+devServer: {
+  hot: true,
+  contentBase: path.join(__dirname, 'public'),
+  publicPath: '/',
+  compress: true,
+  port: 3000
+}
 };
