@@ -42,15 +42,11 @@ const jtrello = (function ($) {
     });
   }
 
+  
+  
+
   function createTabs() {}
 
-  // function createDialogs() {
-  //   DOM.$listDialog.dialog({
-  //     autoOpen: false,
-  //     width: 600,
-
-  //   })
-  // }
 
   // function createDatePickers() {
   //   $('.datepicker').datepicker({
@@ -88,8 +84,8 @@ const jtrello = (function ($) {
     $('.column:last')
       .before('<div class="column"><div class="list"><div class="list-header">' + listName + '<button class="button delete">X</button></div><ul class="list-cards"><li class="add-new"><form class="new-card" action="index.html"><input type="text" name="title" placeholder="Please name the card" /><button class="button add">Add new card</button></form></li></ul></div></div>');
       $('#new-list').click(createCard);
-    
   }
+  
 
 
   function deleteList() {
@@ -107,7 +103,7 @@ const jtrello = (function ($) {
     let cardValue = $(this).find('input[name="title"]').val();
     if (!cardValue) return;
     $(this).closest('.add-new')
-      .before('<li class="card">' + cardValue + '<button class="button delete">X</button></li>');
+      .before('<li id="clickMe" class="card">' + cardValue + '<button class="button delete">X</button></li>');
     $('.delete').click(deleteCard);
     createSortables();
     }
@@ -147,4 +143,30 @@ const jtrello = (function ($) {
 //usage
 $("document").ready(function () {
   jtrello.init();
+
+  $(function() {
+
+    $('#clickMe').click(function(event) {
+        var myText = $('#myText').val();
+        console.log(myText);
+    
+    
+        $(this).closest('ul').before('<div id="dialog">'+myText+'</div>');
+        console.log(this);        
+        event.preventDefault();
+    
+        $("#dialog").dialog({                   
+          width: 250,
+          modal: true,
+            position:{
+            my: "left top",
+            at: "left top",
+            of: "#targetElement"
+    },
+          close: function() {
+              $("#dialog").remove();
+              }
+          });
+        });
+    });
 });
