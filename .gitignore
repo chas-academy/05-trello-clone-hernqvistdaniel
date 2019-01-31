@@ -1,0 +1,5 @@
+# Ignore folder named `public`
+public/	
+
+# Ignore folder named ´node_modules`
+node_modules/

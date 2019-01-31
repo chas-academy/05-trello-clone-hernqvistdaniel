@@ -36,7 +36,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'src/index.html',
+      filename: 'index.html'
     }),
     new webpack.ProvidePlugin({
         $: "jquery",
@@ -47,10 +48,13 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
       chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[hash].css'
-    })
-  ],
+  }),
+  new webpack.HotModuleReplacementPlugin()
+],
   devServer: {
+    hot: true,
     contentBase: path.join(__dirname, 'public'),
+    publicPath: '/',
     compress: true,
     port: 3000
   }
