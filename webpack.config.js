@@ -7,7 +7,7 @@ const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   entry: {
-    index:'./src/js/app.js'
+    index: './src/js/app.js'
   },
   output: {
     path: path.resolve(__dirname, 'public'),
@@ -16,8 +16,7 @@ module.exports = {
     chunkFilename: '[name].js'
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(sa|sc|c)ss$/,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -26,10 +25,10 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
-        loader:"file-loader",
-        options:{
-          name:'[name].[ext]',
-          outputPath:'public/assets/images/'
+        loader: "file-loader",
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'public/assets/images/'
         }
       }
     ]
@@ -40,22 +39,22 @@ module.exports = {
       filename: 'index.html'
     }),
     new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery",
-        "window.jQuery": "jquery'",
-        "window.$": "jquery"
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery'",
+      "window.$": "jquery"
     }),
     new MiniCssExtractPlugin({
       filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
       chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[hash].css'
-  }),
-  new webpack.HotModuleReplacementPlugin()
-],
-devServer: {
-  hot: true,
-  contentBase: path.join(__dirname, 'public'),
-  publicPath: '/',
-  compress: true,
-  port: 3000
-}
+    }),
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer: {
+    hot: true,
+    contentBase: path.join(__dirname, 'public'),
+    publicPath: '/',
+    compress: true,
+    port: 3000
+  }
 };
