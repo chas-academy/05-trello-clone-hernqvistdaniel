@@ -94,7 +94,7 @@ const jtrello = (function ($,) {
     if (listName == "") return;
 
     $('.column:last')
-      .before('<div class="column"><div class="list"><div class="list-header">' + listName + '<button class="button delete">X</button><p>Due Date: ' + findDate + '</p></div><ul class="list-cards"><li class="add-new"><form class="new-card" action="index.html"><input type="text" name="title" placeholder="Please name the card" /><button class="button add">Add new card</button></form></li></ul></div></div>');
+      .before('<div class="column"><div id="toggle" class="list"><div class="list-header">' + listName + '<button class="button delete">X</button><p>Due Date: ' + findDate + '</p></div><ul class="list-cards"><li class="add-new"><form class="new-card" action="index.html"><input type="text" name="title" placeholder="Please name the card" /><button class="button add">Add new card</button></form></li></ul></div></div>');
       $('#new-list').click(createCard);
       createSortables();
       $('#list-creation-dialog').dialog("close");
@@ -102,9 +102,8 @@ const jtrello = (function ($,) {
 
   function deleteList() {
     $('.list').on('click', '.delete', function () {
-      $(this).closest('.column').fadeOut(1200, function () {
-        $(this).closest('.column').remove();
-        console.log("This should delete the list you clicked on");
+      $(this).closest('.column').click(function () {
+        $(".column").toggle("explode").remove();
       });
     });
   }
