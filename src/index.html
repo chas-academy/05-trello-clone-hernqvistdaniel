@@ -1,92 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>jQuery UI - Trello Clone (yay!)</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-</head>
-<body>
+  </head>
+  <body>
+    <div>
+      <button class="button primary bgButton">Change BackgroundColor!</button>
+    </div>
     <div class="board">
-        <div class="column">
-            <div id="toggle" class="list">
-                <div class="list-header">
-                    Todo
-                    <button class="button delete">X</button>
-                </div>
-                <ul class="list-cards">
-                    <li class="card ui-sortable-helper">
-                        Card #14
-                        <button class="button delete">X</button>
-                    </li>
-                    <li class="add-new">
-                        <form class="new-card" action="index.html">
-                            <input type="text" name="title" placeholder="Please name the card" />
-                            <button class="button add">Add new card</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+      <div class="column">
+        <div id="toggle" class="list">
+          <div class="list-header">
+            Todo
+            <button class="button delete deleteList">X</button>
+          </div>
+          <ul class="list-cards">
+            <li class="card ui-sortable-helper">
+              Card #14
+              <button class="button delete">X</button>
+            </li>
+            <li class="add-new">
+              <form class="new-card" action="index.html">
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Please name the card"
+                />
+                <button class="button add">Add new card</button>
+              </form>
+            </li>
+          </ul>
         </div>
-        <div class="column">
-            <div id="toggle" class="list">
-                <div class="list-header">
-                    Doing
-                    <button class="button delete">X</button>
-                </div>
-                <ul class="list-cards">
+      </div>
+      <div class="column">
+        <div id="toggle" class="list">
+          <div class="list-header">
+            Doing
+            <button class="button delete deleteList">X</button>
+          </div>
+          <ul class="list-cards">
+            <li id="clickMe" class="card">
+              Card #2
+              <button class="button delete">X</button>
+            </li>
 
-                    <li id="clickMe" class="card">
-                        Card #2
-                        <button class="button delete">X</button>
-                    </li>
-
-                    <li class="add-new">
-                        <form class="new-card" action="index.html">
-                            <input type="text" name="title" placeholder="Please name the card" />
-                            <button id="addCard" class="button add">Add new card</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+            <li class="add-new">
+              <form class="new-card" action="index.html">
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Please name the card"
+                />
+                <button id="addCard" class="button add">Add new card</button>
+              </form>
+            </li>
+          </ul>
         </div>
-        <div class="column">
-            <div id="toggle" class="list">
-                <div class="list-header">
-                    Completed
-                    <button class="button delete">X</button>
-                </div>
-                <ul class="list-cards">
-                    <li id="clickMe" class="card">
-                        Card #3
-                        <button class="button delete">X</button>
-                    </li>
-                    <li class="add-new">
-                        <form class="new-card" action="index.html">
-                            <input type="text" name="title" placeholder="Please name the card" />
-                            <button class="button add">Add new card</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+      </div>
+      <div class="column">
+        <div id="toggle" class="list">
+          <div class="list-header">
+            Completed
+            <button class="button delete deleteList">X</button>
+          </div>
+          <ul class="list-cards">
+            <li id="clickMe" class="card">
+              Card #3
+              <button class="button delete">X</button>
+            </li>
+            <li class="add-new">
+              <form class="new-card" action="index.html">
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Please name the card"
+                />
+                <button class="button add">Add new card</button>
+              </form>
+            </li>
+          </ul>
         </div>
-        <div class="column">
-            <button id="new-list" class="button">Add new list</button>
-        </div>
-        
+      </div>
+      <div class="column">
+        <button id="new-list" class="button">Add new list</button>
+      </div>
     </div>
+
     <div id="list-creation-dialog" title="Create new list" style="height: 40px">
-        <form class="submit-list"> 
-            <input type="text" name="title" placeholder="List title"/>
-            <p>Date: <input type="text" id="datepicker"></p>
-            <button class="button" name="title">submit</button>
-        </form>
+      <form class="submit-list">
+      <div id="tabs">
+        <ul>
+          <li><a href="#fragment-1">Title</a></li>
+          <li><a href="#fragment-2">Date</a></li>
+        </ul>
+        <div id="fragment-1">
+          <input type="text" class="dialogInputs" name="title" placeholder="List title" />
+        </div>
+        <div id="fragment-2">
+          <p>Date: <input class="dialogInputs" type="text" id="datepicker" /></p>
+        </div>
+      </div>
+      <button type="submit" class="button primary" name="title">Save</button>
+    </form>
     </div>
-    <div id="card-creation-dialog" style="height: 40px">
-        <p></p>
-    </div>
-</body>
+  </body>
 </html>

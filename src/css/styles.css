@@ -1,10 +1,13 @@
 html,
 body {
-  background: #9999ff;
   margin: 0;
   padding: 30px 0 0;
-  font-family: sans-serif;
+}
+
+body {
+  background: #9999ff;
   color: #4d4d4d;
+  font-family: sans-serif;
 }
 
 a {
@@ -145,10 +148,13 @@ input {
   display: ''
 }
 
-
+.bgButton {
+  margin-bottom: 15px;
+}
 
 .ui-dialog input {
   min-height: 24px;
+  border: 1px solid black;
 }
 
 .ui-dialog button {
