@@ -65,11 +65,11 @@ const jtrello = (function($) {
     $("body").on("submit", "form.submit-list", submitList);
     DOM.$board.on("submit", "form.new-card", createCard);
     DOM.$board.on("click", ".card > button.delete", deleteCard);
-    $('body > .bgButton').on('click', ".bgButton", changeColor)
+    $('body').on('click', ".bgButton", changeColor)
   }
   /* ============= WIDGET ============== */
   function changeColor(event) {
-    $('body').bgChanger();
+    $('body').bgChanger().bgChanger('random');
 }
 
   // const korv = document.querySelector('.bgButton')
